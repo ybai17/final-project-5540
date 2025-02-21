@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class FPSPlayerController : MonoBehaviour
 {
     public bool debugLogs;
     public float moveSpeed = 10;
@@ -52,7 +52,7 @@ public class PlayerController : MonoBehaviour
         }
 
         if (debugLogs)
-            //Debug.Log("move = " + moveDirectionActual);
+            Debug.Log("move = " + moveDirectionActual);
 
         moveDirectionActual.y -= playerGravity * Time.deltaTime;
         controller.Move(moveDirectionActual * moveSpeed * Time.deltaTime);
