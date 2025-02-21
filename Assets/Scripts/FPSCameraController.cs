@@ -33,4 +33,9 @@ public class FPSCameraController : MonoBehaviour
 
         transform.localRotation = Quaternion.Euler(pitch, 0, 0);
     }
+
+    void CrosshairEffect()
+    {
+        
+    }
 }
