@@ -6,6 +6,7 @@ TagManager:
   tags:
   - KeyPickup
   - LockedDoor
+  - KeyInHand
   layers:
   - Default
   - TransparentFX

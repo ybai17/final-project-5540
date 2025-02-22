@@ -64,13 +64,22 @@ public class FPSCameraController : MonoBehaviour
             if (raycast.collider.CompareTag("KeyPickup")) {
                 uiManager.CrosshairItem();
                 IsLookingAtItem = true;
-                uiManager.InteractableTextShow();
+                uiManager.InteractableTextShow("Press E to pick up");
 
                 if (Input.GetKeyDown(KeyCode.E)) {
                     if (debugLogs)
                         Debug.Log("ACQUIRING " + raycast.collider.gameObject);
                     inventoryManager.AcquireItem(raycast.collider.gameObject);
                 }
+            } else if (raycast.collider.CompareTag("LockedDoor")) {
+                if (PlayerInventoryManager.CurrentItemInHand) {
+                    if (PlayerInventoryManager.CurrentItemInHand.CompareTag("KeyInHand")) {
+                        uiManager.CrosshairItem();
+                        uiManager.InteractableTextShow("Click to use Key");
+                    }
+                    uiManager.InteractableTextShow("Hmm, not the right item...");
+                }
+                uiManager.InteractableTextShow("Need an item for this...");
             } else {
                 uiManager.CrosshairDefault();
                 IsLookingAtItem = false;

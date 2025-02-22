@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerInventoryManager : MonoBehaviour
@@ -36,8 +35,7 @@ public class PlayerInventoryManager : MonoBehaviour
 
         handItemParent.SetActive(true);
 
-        CurrentItemInHand = handItemParent;
-        
+        CurrentItemInHand = handItemClone;
     }
 
 }

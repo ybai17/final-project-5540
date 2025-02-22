@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -64,20 +65,30 @@ public class UIManager : MonoBehaviour
         crosshairImage.transform.localRotation = Quaternion.Lerp(crosshairImage.transform.localRotation, Quaternion.Euler(0, 0, targetRotation), step);
     }
 
-    public void InteractableTextShow()
+    public void InteractableTextShow(String message)
     {
-        TextAnimation(true, visibleText, textAnimSpeed);
+        TextAnimation(true, message, visibleText, textAnimSpeed);
     }
 
     public void InteractableTextHide()
     {
-        TextAnimation(false, hiddenText, textAnimSpeed);
+        TextAnimation(false, "", hiddenText, textAnimSpeed);
     }
 
-    void TextAnimation(bool visible, Color targetColor, float animationSpeed)
+    /* Not high priority atm
+    public void PickupNotification(GameObject pickup)
+    {
+        statusText.text = "Picked up " + pickup.name;
+
+        statusText.enabled = true;
+    }
+    */
+
+    void TextAnimation(bool visible, String message, Color targetColor, float animationSpeed)
     {
         var step = animationSpeed * Time.deltaTime;
 
+        statusText.text = message;
         statusText.enabled = visible;
         statusText.color = Color.Lerp(statusText.color, targetColor, step);
     }
