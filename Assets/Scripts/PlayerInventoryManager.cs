@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class PlayerInventoryManager : MonoBehaviour
 {
-    public float handItemShrinkFactor = 5; //how much to shrink the item while held in the player's hand
     GameObject handItemParent;
     public static GameObject CurrentItemInHand {get; set;}
 
@@ -28,11 +27,6 @@ public class PlayerInventoryManager : MonoBehaviour
         GameObject handItemClone = Instantiate(pickup.GetComponent<KeyPickupBehavior>().prefab,
                                     handItemParent.transform.position,
                                     transform.rotation);
-        float shrunkX = handItemClone.transform.localScale.x / handItemShrinkFactor;
-        float shrunkY = handItemClone.transform.localScale.y / handItemShrinkFactor;
-        float shrunkZ = handItemClone.transform.localScale.z / handItemShrinkFactor;
-
-        handItemClone.transform.localScale = new Vector3(shrunkX, shrunkY, shrunkZ);
 
         pickup.GetComponent<KeyPickupBehavior>().DestroyPickup();
 
