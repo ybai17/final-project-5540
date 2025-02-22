@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class KeyPickupBehavior : MonoBehaviour
+public class KeyPickupBehavior : MonoBehaviour, KeyObjectInterface
 {
     public GameObject prefab;
 
@@ -16,7 +16,7 @@ public class KeyPickupBehavior : MonoBehaviour
         
     }
 
-    public void DestroyPickup()
+    public void PickedUp()
     {
         Destroy(gameObject);
     }

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class LockedDoorBehavior : MonoBehaviour
+public class LockedDoorBehavior : MonoBehaviour, LockedObjectInterface
 {
     public static bool IsLocked {get; set;}
 
@@ -18,7 +18,7 @@ public class LockedDoorBehavior : MonoBehaviour
         
     }
 
-    public void OpenDoor()
+    public void OpenLock()
     {
         Instantiate(openDoor, transform.position, Quaternion.Euler(0, 90, 0));
         Destroy(gameObject);

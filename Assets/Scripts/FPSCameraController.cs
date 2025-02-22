@@ -78,7 +78,7 @@ public class FPSCameraController : MonoBehaviour
                         uiManager.InteractableTextShow("Click to use Key");
 
                         if (Input.GetButton("Fire1")) {
-                            raycast.collider.gameObject.GetComponent<LockedDoorBehavior>().OpenDoor();
+                            raycast.collider.gameObject.GetComponent<LockedDoorBehavior>().OpenLock();
                             inventoryManager.UseItem();
                         }
                     } else {

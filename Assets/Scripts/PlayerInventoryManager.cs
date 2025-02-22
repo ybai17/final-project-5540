@@ -27,7 +27,7 @@ public class PlayerInventoryManager : MonoBehaviour
                                     handItemParent.transform.position,
                                     transform.rotation);
 
-        pickup.GetComponent<KeyPickupBehavior>().DestroyPickup();
+        pickup.GetComponent<KeyPickupBehavior>().PickedUp();
 
         Destroy(handItemClone.GetComponent<Rigidbody>());
 
@@ -40,6 +40,7 @@ public class PlayerInventoryManager : MonoBehaviour
 
     public void UseItem()
     {
+        
         Destroy(handItemParent.transform.GetChild(0).gameObject);
         CurrentItemInHand = null;
     }
