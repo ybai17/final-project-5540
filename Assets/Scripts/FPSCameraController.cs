@@ -66,7 +66,7 @@ public class FPSCameraController : MonoBehaviour
                 IsLookingAtItem = true;
                 uiManager.InteractableTextShow("Press E to pick up");
 
-                if (Input.GetKeyDown(KeyCode.E)) {
+                if (Input.GetKeyDown(KeyCode.E) && !PlayerInventoryManager.CurrentItemInHand) {
                     if (debugLogs)
                         Debug.Log("ACQUIRING " + raycast.collider.gameObject);
                     inventoryManager.AcquireItem(raycast.collider.gameObject);
@@ -76,10 +76,17 @@ public class FPSCameraController : MonoBehaviour
                     if (PlayerInventoryManager.CurrentItemInHand.CompareTag("KeyInHand")) {
                         uiManager.CrosshairItem();
                         uiManager.InteractableTextShow("Click to use Key");
+
+                        if (Input.GetButton("Fire1")) {
+                            raycast.collider.gameObject.GetComponent<LockedDoorBehavior>().OpenDoor();
+                            inventoryManager.UseItem();
+                        }
+                    } else {
+                        uiManager.InteractableTextShow("Hmm, not the right item...");
                     }
-                    uiManager.InteractableTextShow("Hmm, not the right item...");
+                } else {
+                    uiManager.InteractableTextShow("Need an item for this...");
                 }
-                uiManager.InteractableTextShow("Need an item for this...");
             } else {
                 uiManager.CrosshairDefault();
                 IsLookingAtItem = false;

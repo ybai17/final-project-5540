@@ -38,4 +38,10 @@ public class PlayerInventoryManager : MonoBehaviour
         CurrentItemInHand = handItemClone;
     }
 
+    public void UseItem()
+    {
+        Destroy(handItemParent.transform.GetChild(0).gameObject);
+        CurrentItemInHand = null;
+    }
+
 }

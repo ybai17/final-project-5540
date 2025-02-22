@@ -2,6 +2,10 @@ using UnityEngine;
 
 public class LockedDoorBehavior : MonoBehaviour
 {
+    public static bool IsLocked {get; set;}
+
+    public GameObject openDoor;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -12,5 +16,11 @@ public class LockedDoorBehavior : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void OpenDoor()
+    {
+        Instantiate(openDoor, transform.position, Quaternion.Euler(0, 90, 0));
+        Destroy(gameObject);
     }
 }
