@@ -1,0 +1,54 @@
+using UnityEngine;
+using TMPro;
+using UnityEngine.SceneManagement;
+
+public class PlayerHealth : MonoBehaviour
+{
+    public static float CurrentHealth {get; set;}
+
+    public float maxHealth = 100.0f;
+
+    public TMP_Text healthText;
+
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+        CurrentHealth = maxHealth;
+        healthText.text = "Salary: $" + maxHealth + ",000 / yr";
+        healthText.enabled = false;
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+
+    public void TakeDamage(float damageAmt)
+    {
+        CurrentHealth -= damageAmt;
+
+        healthText.text = "Salary: $" + CurrentHealth + ",000 / yr";
+
+        if (CurrentHealth <= 0) {
+            transform.rotation = Quaternion.Euler(new Vector3(0, 0, 90));
+            healthText.enabled = true;
+            healthText.text = "GAME OVER";
+            Invoke("ReloadSameScene", 5);
+        }
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("HR")) {
+            Debug.Log("Collided with " + other.gameObject.name);
+            TakeDamage(10);
+        }
+    }
+
+    void ReloadSameScene()
+    {
+        Scene scene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(scene.name);
+    }
+}
