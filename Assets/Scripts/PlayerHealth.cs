@@ -34,6 +34,8 @@ public class PlayerHealth : MonoBehaviour
             transform.rotation = Quaternion.Euler(new Vector3(0, 0, 90));
             healthText.enabled = true;
             healthText.text = "GAME OVER";
+            GetComponent<AudioSource>().Play();
+
             Invoke("ReloadSameScene", 5);
         }
     }
