@@ -15,7 +15,7 @@ public class PlayerHealth : MonoBehaviour
     {
         CurrentHealth = maxHealth;
         healthText.text = "Salary: $" + maxHealth + ",000 / yr";
-        healthText.enabled = false;
+        healthText.enabled = true;
     }
 
     // Update is called once per frame
