@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 
 public class HRBehavior : MonoBehaviour
@@ -101,4 +100,14 @@ public class HRBehavior : MonoBehaviour
         
         transform.rotation = Quaternion.Lerp(transform.rotation, goalAngleQ, turnSpeed * Time.deltaTime);
     }
+
+    /*
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player")) {
+            Debug.Log("Triggered with " + other.gameObject.name);
+            other.gameObject.GetComponent<PlayerHealth>().TakeDamage(damage);
+        }
+    }
+    */
 }

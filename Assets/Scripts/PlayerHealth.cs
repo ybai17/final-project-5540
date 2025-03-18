@@ -40,13 +40,25 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter(Collider other)
+    /*
+    void OnCollisionEnter(Collision collision)
     {
-        if (other.gameObject.CompareTag("HR")) {
-            Debug.Log("Collided with " + other.gameObject.name);
+        if (collision.gameObject.CompareTag("HR")) {
+            Debug.Log("Collided with " + collision.gameObject.name);
             TakeDamage(10);
         }
     }
+    */
+
+    
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("HR")) {
+            Debug.Log("Triggered with " + other.gameObject.name);
+            TakeDamage(other.gameObject.GetComponent<HRBehavior>().damage);
+        }
+    }
+    
 
     void ReloadSameScene()
     {

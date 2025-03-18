@@ -8,6 +8,7 @@ TagManager:
   - LockedDoor
   - KeyInHand
   - HR
+  - UI
   layers:
   - Default
   - TransparentFX
