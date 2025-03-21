@@ -5,43 +5,61 @@ public class SpotlightBehavior : MonoBehaviour
     public Color defaultColor;
     public Color detectionColor;
 
+    //basically determines how sensitive and how quickly the spotlight changes from defaultColor to detectionColor
+    public float spotlightSensitivity;
+
+    public float defaultIntensity;
+    public float detectionIntensity;
+
     Light light;
+
+    bool playerInSpotlight;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         light = GetComponent<Light>();
         light.color = defaultColor;
+        light.intensity = defaultIntensity;
+
+        playerInSpotlight = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
-    }
-
-    /*
-    void OnCollisionEnter(Collision other)
-    {
-        if (other.gameObject.CompareTag("Player")) {
-            light.color = Color.black;
+        if (!playerInSpotlight)
+        {
+            Debug.Log("_______Default spotlight");
+            light.color = Color.Lerp(light.color, defaultColor, spotlightSensitivity * Time.deltaTime);
+            light.intensity = Mathf.Lerp(light.intensity, defaultIntensity, spotlightSensitivity * Time.deltaTime);
         }
     }
-    */
 
     
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player")) {
-            light.color = detectionColor;
-            other.gameObject.GetComponent<PlayerHealth>().TakeDamage(10);
+            Debug.Log("Player entered spotlight");
+            playerInSpotlight = true;
+        }
+    }
+    
+
+    void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player")) {
+            Debug.Log("Player STAYING in spotlight");
+            light.color = Color.Lerp(light.color, detectionColor, spotlightSensitivity * Time.fixedDeltaTime);
+            light.intensity = Mathf.Lerp(light.intensity, detectionIntensity, spotlightSensitivity * Time.fixedDeltaTime);
         }
     }
 
     void OnTriggerExit(Collider other)
     {
         if (other.gameObject.CompareTag("Player")) {
-            light.color = defaultColor;
+            Debug.Log("Player left spotlight");
+            playerInSpotlight = false;
         }
     }
 }

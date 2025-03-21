@@ -136,3 +136,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultColor: {r: 1, g: 1, b: 1, a: 0}
   detectionColor: {r: 1, g: 0.01518473, b: 0, a: 0}
+  colorSensitivity: 10
+  defaultIntensity: 400
+  detectionIntensity: 1000

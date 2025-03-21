@@ -8,7 +8,7 @@ public class HRBehavior : MonoBehaviour
     public float waitTime = 5f;
     public float turnSpeed = 5f;
 
-    public float damage = 100f;
+    public float damage = 10f;
 
     public Transform target;
     //Vector3 targetGrounded;
