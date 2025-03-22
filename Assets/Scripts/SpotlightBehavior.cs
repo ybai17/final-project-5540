@@ -11,6 +11,8 @@ public class SpotlightBehavior : MonoBehaviour
     public float defaultIntensity;
     public float detectionIntensity;
 
+    public Color CurrentColor {get; set;}
+
     Light light;
 
     bool playerInSpotlight;
@@ -22,6 +24,8 @@ public class SpotlightBehavior : MonoBehaviour
         light.color = defaultColor;
         light.intensity = defaultIntensity;
 
+        CurrentColor = light.color;
+
         playerInSpotlight = false;
     }
 
@@ -30,9 +34,10 @@ public class SpotlightBehavior : MonoBehaviour
     {
         if (!playerInSpotlight)
         {
-            Debug.Log("_______Default spotlight");
+            //Debug.Log("_______Default spotlight");
             light.color = Color.Lerp(light.color, defaultColor, spotlightSensitivity * Time.deltaTime);
             light.intensity = Mathf.Lerp(light.intensity, defaultIntensity, spotlightSensitivity * Time.deltaTime);
+            CurrentColor = light.color;
         }
     }
 
@@ -40,7 +45,7 @@ public class SpotlightBehavior : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player")) {
-            Debug.Log("Player entered spotlight");
+            //Debug.Log("Player entered spotlight");
             playerInSpotlight = true;
         }
     }
@@ -49,16 +54,17 @@ public class SpotlightBehavior : MonoBehaviour
     void OnTriggerStay(Collider other)
     {
         if (other.gameObject.CompareTag("Player")) {
-            Debug.Log("Player STAYING in spotlight");
+            //Debug.Log("Player STAYING in spotlight");
             light.color = Color.Lerp(light.color, detectionColor, spotlightSensitivity * Time.fixedDeltaTime);
             light.intensity = Mathf.Lerp(light.intensity, detectionIntensity, spotlightSensitivity * Time.fixedDeltaTime);
+            CurrentColor = light.color;
         }
     }
 
     void OnTriggerExit(Collider other)
     {
         if (other.gameObject.CompareTag("Player")) {
-            Debug.Log("Player left spotlight");
+            //Debug.Log("Player left spotlight");
             playerInSpotlight = false;
         }
     }
