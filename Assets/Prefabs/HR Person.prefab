@@ -14,7 +14,9 @@ GameObject:
   - component: {fileID: 4896667180187865318}
   - component: {fileID: 5368505022670043684}
   - component: {fileID: 7347862843832329024}
+  - component: {fileID: 670691670863454216}
   - component: {fileID: 637277120119087031}
+  - component: {fileID: -2507780166786685712}
   m_Layer: 0
   m_Name: HR Person
   m_TagString: HR
@@ -144,7 +146,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7314077443847977885}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a38443cb8dfb6294984adf95d5f5d1ff, type: 3}
   m_Name: 
@@ -158,6 +160,27 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+--- !u!114 &670691670863454216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7314077443847977885}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ad0ff50084e7d94c9d715e30fa87a09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentState: 0
+  movementSpeed: 2
+  turnSpeed: 5
+  damage: 10
+  target: {fileID: 0}
+  spotlight: {fileID: 0}
+  spotlightChaseThreshold: 200
+  waitTime: 5
+  patrolPoints: []
 --- !u!54 &637277120119087031
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -185,6 +208,28 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 2
+--- !u!195 &-2507780166786685712
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7314077443847977885}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 1
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1001 &988670322035691909
 PrefabInstance:
   m_ObjectHideFlags: 0

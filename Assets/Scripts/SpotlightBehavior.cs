@@ -11,8 +11,6 @@ public class SpotlightBehavior : MonoBehaviour
     public float defaultIntensity;
     public float detectionIntensity;
 
-    public Color CurrentColor {get; set;}
-
     Light light;
 
     bool playerInSpotlight;
@@ -23,8 +21,6 @@ public class SpotlightBehavior : MonoBehaviour
         light = GetComponent<Light>();
         light.color = defaultColor;
         light.intensity = defaultIntensity;
-
-        CurrentColor = light.color;
 
         playerInSpotlight = false;
     }
@@ -37,7 +33,6 @@ public class SpotlightBehavior : MonoBehaviour
             //Debug.Log("_______Default spotlight");
             light.color = Color.Lerp(light.color, defaultColor, spotlightSensitivity * Time.deltaTime);
             light.intensity = Mathf.Lerp(light.intensity, defaultIntensity, spotlightSensitivity * Time.deltaTime);
-            CurrentColor = light.color;
         }
     }
 
@@ -57,7 +52,6 @@ public class SpotlightBehavior : MonoBehaviour
             //Debug.Log("Player STAYING in spotlight");
             light.color = Color.Lerp(light.color, detectionColor, spotlightSensitivity * Time.fixedDeltaTime);
             light.intensity = Mathf.Lerp(light.intensity, detectionIntensity, spotlightSensitivity * Time.fixedDeltaTime);
-            CurrentColor = light.color;
         }
     }
 
