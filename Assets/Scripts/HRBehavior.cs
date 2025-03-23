@@ -11,9 +11,11 @@ public class HRBehavior : MonoBehaviour
     public float damage = 10f;
 
     public Transform target;
-    //Vector3 targetGrounded;
 
     public Transform[] patrolPoints;
+
+    public AudioClip detectedSound;
+
     Transform currentPoint;
     int currentPointIndex;
     Transform nextPoint;
@@ -24,8 +26,8 @@ public class HRBehavior : MonoBehaviour
     float startWaitTime;
     float endWaitTime;
 
-    float goalAngle;
-    Quaternion goalAngleQ;
+    string captureDialogue = "HR: Hello, the boss wants to talk to you about a salary adjustment! " +
+        "Please go back to the waiting area.";
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -52,11 +54,6 @@ public class HRBehavior : MonoBehaviour
             
             Debug.Log("startWaitTime: " + startWaitTime);
             Debug.Log("endWaitTime: " + endWaitTime);
-
-            //get angle we need to turn towards to look at the next point
-            goalAngle = Mathf.Atan2(nextPoint.position.x - transform.position.x, nextPoint.position.z - transform.position.z);
-            goalAngle *= Mathf.Rad2Deg;
-            goalAngleQ = Quaternion.Euler(0, goalAngle, 0);
         }
 
         if (Time.time <= endWaitTime) {
@@ -66,7 +63,6 @@ public class HRBehavior : MonoBehaviour
 
         //Debug.Log("Moving towards: " + nextPoint);
         transform.position = Vector3.MoveTowards(transform.position, nextPoint.position, movementSpeed * Time.deltaTime);
-        //transform.LookAt(nextPoint);
     }
 
     void ReachedCheckpoint()
@@ -98,16 +94,31 @@ public class HRBehavior : MonoBehaviour
     {
         Debug.Log("WAITING");
         
-        transform.rotation = Quaternion.Lerp(transform.rotation, goalAngleQ, turnSpeed * Time.deltaTime);
+        //look at next point
+        Vector3 lookDirection = (nextPoint.position - transform.position).normalized;
+        Quaternion lookRotation = Quaternion.LookRotation(lookDirection);
+        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, turnSpeed * Time.deltaTime);
     }
 
-    /*
+    
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player")) {
-            Debug.Log("Triggered with " + other.gameObject.name);
-            other.gameObject.GetComponent<PlayerHealth>().TakeDamage(damage);
+            Debug.Log("HR Triggered with " + other.gameObject.name);
+            //other.gameObject.GetComponent<PlayerHealth>().TakeDamage(damage);
+            CapturePlayer();
         }
     }
-    */
+    
+
+    public void CapturePlayer()
+    {
+        Debug.Log("Captured player!");
+
+        AudioSource.PlayClipAtPoint(detectedSound, transform.position);
+        
+        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>().TakeDamage(damage);
+
+        GameObject.FindGameObjectWithTag("UI").GetComponent<UIManager>().DisplayDialogue(captureDialogue);
+    }
 }

@@ -136,6 +136,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultColor: {r: 1, g: 1, b: 1, a: 0}
   detectionColor: {r: 1, g: 0.01518473, b: 0, a: 0}
-  colorSensitivity: 10
+  spotlightSensitivity: 0
   defaultIntensity: 400
   detectionIntensity: 1000
+  detectedSound: {fileID: 8300000, guid: b2d28c4da3684174bb4cdaa22e16bcdc, type: 3}

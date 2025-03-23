@@ -41,16 +41,6 @@ public class PlayerHealth : MonoBehaviour
     }
 
     /*
-    void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("HR")) {
-            Debug.Log("Collided with " + collision.gameObject.name);
-            TakeDamage(10);
-        }
-    }
-    */
-
-    
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("HR")) {
@@ -58,6 +48,7 @@ public class PlayerHealth : MonoBehaviour
             TakeDamage(other.gameObject.GetComponent<HRBehavior>().damage);
         }
     }
+    */
     
 
     void ReloadSameScene()

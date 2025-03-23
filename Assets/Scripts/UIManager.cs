@@ -29,6 +29,10 @@ public class UIManager : MonoBehaviour
     public Color visibleText;
     public float textAnimSpeed = 5;
 
+    [Header("Dialogue Text Settings")]
+    public TMP_Text dialogueText;
+    public Image dialogueBoxImage;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -37,6 +41,9 @@ public class UIManager : MonoBehaviour
 
         canvas = GameObject.Find("Canvas");
         statusText.enabled = false;
+
+        dialogueBoxImage.enabled = false;
+        dialogueText.enabled = false;
     }
 
     // Update is called once per frame
@@ -91,5 +98,19 @@ public class UIManager : MonoBehaviour
         statusText.text = message;
         statusText.enabled = visible;
         statusText.color = Color.Lerp(statusText.color, targetColor, step);
+    }
+    
+    public void DisplayDialogue(string dialogue)
+    {
+        dialogueText.text = dialogue;
+
+        dialogueText.enabled = true;
+        dialogueBoxImage.enabled = true;
+    }
+
+    public void HideDialogue()
+    {
+        dialogueText.enabled = false;
+        dialogueBoxImage.enabled = false;
     }
 }
