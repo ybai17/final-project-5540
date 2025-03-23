@@ -9,6 +9,7 @@ TagManager:
   - KeyInHand
   - HR
   - UI
+  - Level1Objective
   layers:
   - Default
   - TransparentFX

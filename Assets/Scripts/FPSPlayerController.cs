@@ -57,4 +57,12 @@ public class FPSPlayerController : MonoBehaviour
         moveDirectionActual.y -= playerGravity * Time.deltaTime;
         controller.Move(moveDirectionActual * moveSpeed * Time.deltaTime);
     }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Level1Objective"))
+        {
+            GameObject.Find("Level").GetComponent<LevelManager>().LevelWon();
+        }
+    }
 }
