@@ -36,14 +36,11 @@ public class HRBehavior : MonoBehaviour
         target = GameObject.FindGameObjectWithTag("Player").transform;
 
         isReturning = false;
-        if (patrolPoints)
-        {
-            currentPointIndex = 0;
-            currentPoint = patrolPoints[0];
-            nextPointIndex = 1;
-             nextPoint = patrolPoints[1];
-            
-        }
+
+        currentPointIndex = 0;
+        currentPoint = patrolPoints[0];
+        nextPointIndex = 1;
+        nextPoint = patrolPoints[1];
        
     }
 

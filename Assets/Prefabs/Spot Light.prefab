@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1159480392627358576}
   - component: {fileID: 7035441023276678358}
   - component: {fileID: 4020599333439965704}
+  - component: {fileID: 5857700715599445456}
   m_Layer: 0
   m_Name: Spot Light
   m_TagString: Untagged
@@ -134,9 +135,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10ad098ec707bad44a296c420ea3b79f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultColor: {r: 1, g: 1, b: 1, a: 0}
-  detectionColor: {r: 1, g: 0.01518473, b: 0, a: 0}
-  spotlightSensitivity: 0
+  defaultColor: {r: 0.5647059, g: 0.5882353, b: 1, a: 0.27450982}
+  detectionColor: {r: 1, g: 0, b: 0, a: 1}
+  spotlightSensitivity: 0.5
   defaultIntensity: 400
   detectionIntensity: 1000
-  detectedSound: {fileID: 8300000, guid: b2d28c4da3684174bb4cdaa22e16bcdc, type: 3}
+--- !u!136 &5857700715599445456
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6703368458993033835}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 3.5
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 4}
