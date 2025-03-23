@@ -15,6 +15,7 @@ public class HRBehavior : MonoBehaviour
     public Transform[] patrolPoints;
 
     public AudioClip detectedSound;
+    public AudioClip talkingSound;
 
     Transform currentPoint;
     int currentPointIndex;
@@ -105,10 +106,11 @@ public class HRBehavior : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player")) {
             Debug.Log("HR Triggered with " + other.gameObject.name);
-            //other.gameObject.GetComponent<PlayerHealth>().TakeDamage(damage);
+            other.gameObject.GetComponent<PlayerHealth>().TakeDamage(damage);
             CapturePlayer();
         }
     }
+    
     
 
     public void CapturePlayer()
@@ -116,6 +118,7 @@ public class HRBehavior : MonoBehaviour
         Debug.Log("Captured player!");
 
         AudioSource.PlayClipAtPoint(detectedSound, transform.position);
+        AudioSource.PlayClipAtPoint(talkingSound, transform.position);
         
         GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>().TakeDamage(damage);
 

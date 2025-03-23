@@ -46,11 +46,11 @@ public class PlayerHealth : MonoBehaviour
         if (other.gameObject.CompareTag("HR")) {
             Debug.Log("Triggered with " + other.gameObject.name + " for " + other.gameObject.GetComponent<HRBehavior>().damage + " damage");
             TakeDamage(other.gameObject.GetComponent<HRBehavior>().damage);
+            other.gameObject.GetComponent<HRBehavior>().CapturePlayer();
         }
     }
     */
     
-
     void ReloadSameScene()
     {
         Scene scene = SceneManager.GetActiveScene();

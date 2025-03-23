@@ -106,10 +106,13 @@ public class UIManager : MonoBehaviour
 
         dialogueText.enabled = true;
         dialogueBoxImage.enabled = true;
+
+        Invoke("HideDialogue", 5);
     }
 
     public void HideDialogue()
     {
+        dialogueText.text = "";
         dialogueText.enabled = false;
         dialogueBoxImage.enabled = false;
     }

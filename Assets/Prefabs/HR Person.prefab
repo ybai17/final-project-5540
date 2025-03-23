@@ -160,7 +160,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  detectedSound: {fileID: 8300000, guid: b2d28c4da3684174bb4cdaa22e16bcdc, type: 3}
+  detectedSound: {fileID: 8300000, guid: e884eadb3679e1245be9be62fd622121, type: 3}
+  talkingSound: {fileID: 8300000, guid: b10440ff549391841967f5e7de6b9fa0, type: 3}
 --- !u!114 &670691670863454216
 MonoBehaviour:
   m_ObjectHideFlags: 0

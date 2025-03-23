@@ -48,7 +48,7 @@ public class SpotlightBehavior : MonoBehaviour
             light.color = detectionColor;
             light.intensity = detectionIntensity;
 
-            transform.parent.GetComponent<HRBehavior>().CapturePlayer();
+            //transform.parent.GetComponent<HRBehavior>().CapturePlayer();
         }
     }
     
