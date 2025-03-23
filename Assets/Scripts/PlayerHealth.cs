@@ -1,6 +1,5 @@
 using UnityEngine;
 using TMPro;
-using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -34,12 +33,13 @@ public class PlayerHealth : MonoBehaviour
             transform.rotation = Quaternion.Euler(new Vector3(0, 0, 90));
 
             GetComponent<FPSPlayerController>().enabled = false;
+            GetComponent<CapsuleCollider>().enabled = false;
 
             healthText.enabled = true;
             healthText.text = "GAME OVER";
             GetComponent<AudioSource>().Play();
 
-            Invoke("ReloadSameScene", 5);
+            GameObject.Find("Level").GetComponent<LevelManager>().LevelLost();
         }
     }
 
@@ -53,10 +53,4 @@ public class PlayerHealth : MonoBehaviour
         }
     }
     */
-
-    void ReloadSameScene()
-    {
-        Scene scene = SceneManager.GetActiveScene();
-        SceneManager.LoadScene(scene.name);
-    }
 }

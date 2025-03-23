@@ -17,12 +17,12 @@ public class LevelManager : MonoBehaviour
         
     }
 
-    void LevelLost()
+    public void LevelLost()
     {
-
+        Invoke("ReloadSameScene", 5);
     }
 
-    void LevelWon()
+    public void LevelWon()
     {
 
     }
