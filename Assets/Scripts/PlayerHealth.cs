@@ -32,6 +32,9 @@ public class PlayerHealth : MonoBehaviour
 
         if (CurrentHealth <= 0) {
             transform.rotation = Quaternion.Euler(new Vector3(0, 0, 90));
+
+            GetComponent<FPSPlayerController>().enabled = false;
+
             healthText.enabled = true;
             healthText.text = "GAME OVER";
             GetComponent<AudioSource>().Play();
@@ -50,7 +53,7 @@ public class PlayerHealth : MonoBehaviour
         }
     }
     */
-    
+
     void ReloadSameScene()
     {
         Scene scene = SceneManager.GetActiveScene();

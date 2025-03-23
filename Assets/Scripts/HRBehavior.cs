@@ -110,8 +110,6 @@ public class HRBehavior : MonoBehaviour
             CapturePlayer();
         }
     }
-    
-    
 
     public void CapturePlayer()
     {
