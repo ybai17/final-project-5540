@@ -35,7 +35,9 @@ public class LevelManager : MonoBehaviour
 
         AudioSource.PlayClipAtPoint(victorySound, GameObject.FindGameObjectWithTag("Player").transform.position);
 
-        Invoke("ReloadSameScene", 5);
+        //Invoke("ReloadSameScene", 5);
+
+        SceneManager.LoadScene(1);
     }
 
     void ReloadSameScene()
