@@ -9,7 +9,12 @@ TagManager:
   - KeyInHand
   - HR
   - UI
+<<<<<<< HEAD
   - Level1Objective
+=======
+  - Projectile
+  - Boss
+>>>>>>> 30b8322 (add level 2 and revise UI salary level)
   layers:
   - Default
   - TransparentFX

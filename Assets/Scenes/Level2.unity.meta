@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 45a2fb950b224854697be7ef07e4f25f
+=======
+guid: 4e47220246c8743bfb0f69628d4fae2b
+>>>>>>> 30b8322 (add level 2 and revise UI salary level)
 DefaultImporter:
   externalObjects: {}
   userData: 

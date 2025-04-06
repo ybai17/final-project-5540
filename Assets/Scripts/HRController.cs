@@ -109,18 +109,17 @@ public class HRController : MonoBehaviour
             }
         }
 
-        // 处理追逐和捕捉状态
+
         if(currentState == State.Run)
         {
-            // 追逐玩家
+         
             Vector3 direction = (player.position - transform.position).normalized;
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(direction), Time.deltaTime * 5f);
             transform.Translate(Vector3.forward * runSpeed * Time.deltaTime);
         }
         else if(currentState == State.Catch)
         {
-            // 捕捉状态下可以停止移动，或加入捕捉的其他逻辑
-            // 此处仅设置动画为捕捉状态
+           
         }
     }
 }

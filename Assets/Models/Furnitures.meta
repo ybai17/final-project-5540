@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: f2857443cc783e14c91f7804f5c2f0c9
+=======
+guid: b6547e0edc13d22468e33a5e2c2764af
+>>>>>>> 30b8322 (add level 2 and revise UI salary level)
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

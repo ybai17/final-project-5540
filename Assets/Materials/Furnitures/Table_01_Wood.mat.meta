@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 4a196b5d54f99304581da18c98e9f8d1
+=======
+guid: 4e5622e0919e8a04e8c62d9e946d0ac8
+>>>>>>> 30b8322 (add level 2 and revise UI salary level)
 NativeFormatImporter:
   externalObjects: {}
   mainObjectFileID: 2100000

@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 00d7b82afb506bb4cba0d6b53ef314b9
+=======
+guid: 4d8b52bac6a2bdd4ba5ea430a2880280
+>>>>>>> 30b8322 (add level 2 and revise UI salary level)
 PrefabImporter:
   externalObjects: {}
   userData: 

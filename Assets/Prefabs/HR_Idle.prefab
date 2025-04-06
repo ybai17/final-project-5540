@@ -1647,8 +1647,9 @@ GameObject:
   - component: {fileID: 6251086167744865450}
   - component: {fileID: 3693143442948527030}
   - component: {fileID: 4151028098820712125}
-  - component: {fileID: 6907731538145100419}
   - component: {fileID: 7579738501272450207}
+  - component: {fileID: 8261780022856427035}
+  - component: {fileID: 211762406735421625}
   m_Layer: 0
   m_Name: HR_Idle
   m_TagString: HR
@@ -1684,7 +1685,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8333643669150424845}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 81a768422452b4cc48e14d3167f7eaf9, type: 3}
   m_Controller: {fileID: 9100000, guid: 2414942c2b2f148d2b61477f7dec8ea5, type: 2}
   m_CullingMode: 1
@@ -1692,7 +1693,7 @@ Animator:
   m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
+  m_AnimatePhysics: 1
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
@@ -1725,29 +1726,6 @@ LODGroup:
     renderers:
     - renderer: {fileID: 4031735252041189122}
   m_Enabled: 1
---- !u!114 &6907731538145100419
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8333643669150424845}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a38443cb8dfb6294984adf95d5f5d1ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movementSpeed: 1
-  waitTime: 5
-  turnSpeed: 5
-  damage: 10
-  target: {fileID: 0}
-  patrolPoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  detectedSound: {fileID: 8300000, guid: e884eadb3679e1245be9be62fd622121, type: 3}
-  talkingSound: {fileID: 8300000, guid: b10440ff549391841967f5e7de6b9fa0, type: 3}
 --- !u!54 &7579738501272450207
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1773,8 +1751,47 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 1
   m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 2
+  m_Constraints: 4
+  m_CollisionDetection: 0
+--- !u!114 &8261780022856427035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8333643669150424845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e475497e4ac5b840b8e30b6a9bf27ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  walkSpeed: 2
+  runSpeed: 4
+  detectionRange: 5
+  catchDistance: 1
+  player: {fileID: 0}
+  animator: {fileID: 3693143442948527030}
+--- !u!65 &211762406735421625
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8333643669150424845}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 2, z: 1}
+  m_Center: {x: 0, y: 0.83, z: 0}
 --- !u!1 &8376198064809057766
 GameObject:
   m_ObjectHideFlags: 0

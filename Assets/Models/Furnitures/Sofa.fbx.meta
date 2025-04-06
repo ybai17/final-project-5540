@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 53f08728097f9b44f8dd6cb4ee721402
+=======
+guid: 057898a86dc7d45479bc27e29f70dd2c
+>>>>>>> 30b8322 (add level 2 and revise UI salary level)
 ModelImporter:
   serializedVersion: 26
   internalIDToNameTable: []
