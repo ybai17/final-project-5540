@@ -269,6 +269,7 @@ GameObject:
   - component: {fileID: 2990702408133335465}
   - component: {fileID: 7164051769313096998}
   - component: {fileID: 2639336584556237789}
+  - component: {fileID: 5265605195270175738}
   m_Layer: 0
   m_Name: Backrest
   m_TagString: Untagged
@@ -344,6 +345,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &5265605195270175738
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1101127992570371016}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.006674024, y: 0.0014170922, z: 0.0059942966}
+  m_Center: {x: -0.00001732689, y: -0.0014704725, z: 0.0038196943}
 --- !u!1 &1379060597446258929
 GameObject:
   m_ObjectHideFlags: 0
@@ -355,6 +377,7 @@ GameObject:
   - component: {fileID: 2317926775929233665}
   - component: {fileID: 4560061860270860025}
   - component: {fileID: 2848949905425027303}
+  - component: {fileID: 4989423109161673157}
   m_Layer: 0
   m_Name: Seat
   m_TagString: Untagged
@@ -430,6 +453,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &4989423109161673157
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1379060597446258929}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.0073216744, y: 0.0068015927, z: 0.0013154835}
+  m_Center: {x: 0.000068563386, y: -0.0048106876, z: -0.000040065326}
 --- !u!1 &2098580868879502035
 GameObject:
   m_ObjectHideFlags: 0
@@ -697,7 +741,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3842264854881573734}
-  - component: {fileID: 3526614227391592715}
   - component: {fileID: 1314740771634476099}
   m_Layer: 0
   m_Name: OfficeChairPrefab
@@ -716,7 +759,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_LocalScale: {x: 1.5000001, y: 1.5, z: 1.5000001}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 7323811442827306265}
@@ -735,28 +778,6 @@ Transform:
   - {fileID: 2317926775929233665}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!64 &3526614227391592715
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4474791511562600924}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
 --- !u!54 &1314740771634476099
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -779,7 +800,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
