@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 7643586112178008614}
   - component: {fileID: 4175209461173733865}
   - component: {fileID: 5599800152297184387}
-  - component: {fileID: 8759256600193166497}
   - component: {fileID: 7872860841267021860}
   m_Layer: 0
   m_Name: Toilet cabine.001
@@ -112,25 +111,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300276, guid: 18cd780e6948a554a850b2d047ebf8fb, type: 3}
---- !u!114 &8759256600193166497
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2185598961281830769}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e7954b3afdba044799272ef7bf5c206, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  UseDoors:
-  - Door: {fileID: 2185598961281830769}
-    CloseValue: 0
-    OpenValue: 90
-    isDoorOpen: 1
-    RotationOrigin: {fileID: 2185598961281830769}
-  door_in_use: 0
 --- !u!65 &7872860841267021860
 BoxCollider:
   m_ObjectHideFlags: 0

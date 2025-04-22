@@ -1,31 +1,33 @@
 using UnityEngine;
+using System.Linq;
 
 public class FPSCameraController : MonoBehaviour
 {
-    Transform player;
-    float pitch;
-    UIManager uiManager;
-    public bool debugLogs;
-    PlayerInventoryManager inventoryManager;
+    [Header("Look Settings")]
+    public float mouseSens = 500f;
+    public float minPitch = -90f;
+    public float maxPitch = 90f;
 
-    public float mouseSens = 500;
-    public float minPitch = -90;
-    public float maxPitch = 90;
+    [Header("Interaction Settings")]
+    public float crosshairMaxDistInteractable = 5f;
+    public bool debugLogs = false;
 
-    public float crosshairMaxDistInteractable = 5;
+    private Transform player;
+    private float pitch;
+    private UIManager uiManager;
+    private PlayerInventoryManager inventoryManager;
 
     public static bool IsLookingAtItem { get; private set; }
 
     void Start()
     {
         player = transform.parent;
-        inventoryManager = transform.parent.GetComponent<PlayerInventoryManager>();
+        inventoryManager = player.GetComponent<PlayerInventoryManager>();
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
         uiManager = FindAnyObjectByType<UIManager>();
-
         IsLookingAtItem = false;
     }
 
@@ -34,101 +36,90 @@ public class FPSCameraController : MonoBehaviour
         float moveX = Input.GetAxis("Mouse X") * mouseSens * Time.deltaTime;
         float moveY = Input.GetAxis("Mouse Y") * mouseSens * Time.deltaTime;
 
-        if (player)
-            player.Rotate(Vector3.up, moveX);
-
+        player.Rotate(Vector3.up, moveX);
         pitch -= moveY;
         pitch = Mathf.Clamp(pitch, minPitch, maxPitch);
-        transform.localRotation = Quaternion.Euler(pitch, 0, 0);
+        transform.localRotation = Quaternion.Euler(pitch, 0f, 0f);
     }
 
-    void FixedUpdate()
-    {
-        CrosshairCheck();
-    }
+    void FixedUpdate() => CrosshairCheck();
 
-    void CrosshairCheck()
+    private void CrosshairCheck()
     {
-        RaycastHit hit;
-        bool didHit = Physics.Raycast(transform.position, transform.forward, out hit, crosshairMaxDistInteractable);
-
-        if (!didHit)
+        // Raycast forward from camera
+        if (!Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, crosshairMaxDistInteractable))
         {
-            uiManager.CrosshairDefault();
-            IsLookingAtItem = false;
-            uiManager.InteractableTextHide();
+            ClearUI();
             return;
         }
 
-        // Debug
         if (debugLogs)
-            Debug.Log("Looking at: " + hit.collider.name + " (tag=" + hit.collider.tag + ")");
+            Debug.Log($"[CrosshairCheck] Hit: {hit.collider.name} (tag={hit.collider.tag})");
 
-        // 1) Pickupable key
+        // Remove destroyed items from inventory
+        PlayerInventoryManager.CurrentItemsInHand.RemoveAll(item => item == null);
+
+        // Key pickup
         if (hit.collider.CompareTag("KeyPickup"))
         {
             uiManager.CrosshairItem();
             IsLookingAtItem = true;
             uiManager.InteractableTextShow("Press E to pick up");
-
-            if (Input.GetKeyDown(KeyCode.E) && !PlayerInventoryManager.CurrentItemInHand)
-            {
-                if (debugLogs)
-                    Debug.Log("ACQUIRING " + hit.collider.gameObject.name);
+            if (Input.GetKeyDown(KeyCode.E))
                 inventoryManager.AcquireItem(hit.collider.gameObject);
-            }
+            return;
         }
-        // 2) Locked door that needs key
-        else if (hit.collider.CompareTag("LockedDoor"))
-        {
-            if (PlayerInventoryManager.CurrentItemInHand)
-            {
-                if (PlayerInventoryManager.CurrentItemInHand.CompareTag("KeyInHand"))
-                {
-                    uiManager.CrosshairItem();
-                    IsLookingAtItem = true;
-                    uiManager.InteractableTextShow("Click to use Key");
 
-                    if (Input.GetButton("Fire1"))
-                    {
-                        hit.collider.GetComponent<LockedDoorBehavior>().OpenLock();
-                        inventoryManager.UseItem();
-                    }
-                }
-                else
+        // Door interaction (requires optional key)
+        var door = hit.collider.GetComponentInParent<DoorScript.Door>();
+        if (door != null)
+        {
+            bool canOpen = door.requiredKeyPrefab == null
+                || PlayerInventoryManager.CurrentItemsInHand.Any(item =>
                 {
-                    uiManager.CrosshairDefault();
-                    IsLookingAtItem = false;
-                    uiManager.InteractableTextShow("Hmm, not the right item...");
+                    var pickup = item.GetComponent<KeyPickupBehavior>();
+                    return pickup != null && pickup.prefab == door.requiredKeyPrefab;
+                });
+
+            if (canOpen)
+            {
+                uiManager.CrosshairItem();
+                IsLookingAtItem = true;
+                uiManager.InteractableTextShow("Press E to open door");
+
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    door.ToggleDoor();
+                    // consume the key if needed
+                    if (door.requiredKeyPrefab != null)
+                    {
+                        var keyItem = PlayerInventoryManager.CurrentItemsInHand
+                            .First(item =>
+                            {
+                                var pickup = item.GetComponent<KeyPickupBehavior>();
+                                return pickup != null && pickup.prefab == door.requiredKeyPrefab;
+                            });
+                        inventoryManager.UseItem(keyItem);
+                    }
                 }
             }
             else
             {
                 uiManager.CrosshairDefault();
                 IsLookingAtItem = false;
-                uiManager.InteractableTextShow("Need an item for this...");
+                uiManager.InteractableTextShow($"Need {door.requiredKeyPrefab.name}");
             }
+            return;
         }
-        // 3) Generic door you can open/close
-        else if (hit.collider.CompareTag("door"))
-        {
-            uiManager.CrosshairItem();
-            IsLookingAtItem = true;
-            uiManager.InteractableTextShow("Click to open door");
 
-            if (Input.GetButton("Fire1"))
-            {
-                var door = hit.collider.GetComponentInParent<Door>();
-                if (door != null)
-                    door.MoveMyDoor(); 
-            }
-        }
-        // 4) Nothing interactable
-        else
-        {
-            uiManager.CrosshairDefault();
-            IsLookingAtItem = false;
-            uiManager.InteractableTextHide();
-        }
+        // Nothing interactable
+        ClearUI();
+    }
+
+    private void ClearUI()
+    {
+        uiManager.CrosshairDefault();
+        IsLookingAtItem = false;
+        uiManager.InteractableTextHide();
     }
 }

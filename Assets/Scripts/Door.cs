@@ -1,200 +1,49 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-
-
-
-public class Door : MonoBehaviour
+namespace DoorScript
 {
-
-
-    [System.Serializable]
-    public class DoorGet 
+    [RequireComponent(typeof(AudioSource), typeof(Collider))]
+    public class Door : MonoBehaviour
     {
+        [Header("Rotation Settings")]
+        public bool open = false;
+        public float smooth = 1.0f;
+        public float DoorOpenAngle = -90f;
+        public float DoorCloseAngle = 0f;
 
-        public GameObject Door;
-        public int CloseValue;
-        public int OpenValue;
-        public bool isDoorOpen;
-        public GameObject RotationOrigin;
+        [Header("Key Unlock")]
+        [Tooltip("Assign the key prefab required to unlock this door. Leave null for no key needed.")]
+        public GameObject requiredKeyPrefab;
 
+        [Header("Sound")]
+        public AudioSource asource;
+        public AudioClip openDoor;
+        public AudioClip closeDoor;
 
-    }
-   
-    public List<DoorGet> UseDoors = new List<DoorGet>();
-
-
-   public bool door_in_use;
-
-
-
-    public void MoveMyDoor()
-    {
-
-        
-        foreach (var door in UseDoors)
+        void Start()
         {
-            if (door.Door == gameObject)
-            {
-                
-                   
+            asource = GetComponent<AudioSource>();
+        }
 
-                    if (door.isDoorOpen == false && !door_in_use)
-                    {
-                        
-                        door_in_use = true;
-                        
-                        door.isDoorOpen = true;
+        void Update()
+        {
+            // Smoothly swing door between closed and open angles
+            Quaternion target = open
+                ? Quaternion.Euler(0f, DoorOpenAngle, 0f)
+                : Quaternion.Euler(0f, DoorCloseAngle, 0f);
 
-                        DoorStartUsing = StartCoroutine(OpenDoor(door.OpenValue, door.Door,door.RotationOrigin));
+            transform.localRotation = Quaternion.Slerp(
+                transform.localRotation,
+                target,
+                Time.deltaTime * 5f * smooth
+            );
+        }
 
-
-
-
-                    }
-
-                    if (door.isDoorOpen == true && !door_in_use)
-                    {
-                        
-
-                        door_in_use = true;
-                        
-                        door.isDoorOpen = false;
-                        DoorStartUsing = StartCoroutine(CloseDoor(door.CloseValue, door.Door,door.OpenValue,door.RotationOrigin));
-                        
-                    }
-                
-
-            }
+        public void ToggleDoor()
+        {
+            open = !open;
+            asource.clip = open ? openDoor : closeDoor;
+            asource.Play();
         }
     }
-
-
-
-
-        public void ActionDoor()
-        {
-
-
-
-        foreach (var door in UseDoors)
-        {
-           
-            door.Door.GetComponent<Door>().MoveMyDoor();
-
-        }
-
-
-        } 
-
-
-    
-
-    public Coroutine DoorStartUsing;
-    
-
-    public IEnumerator OpenDoor(int Angle,GameObject currentDoor,GameObject RotationOri)
-    {
-        
-
-        repeatLoop:
-        yield return new WaitForSeconds(0.01f);
-        
-      
-
-        if (Angle > 0)
-        {
-            RotationOri.transform.Rotate(new Vector3(0, 0, 95 * Time.deltaTime));
-
-            if (Angle < RotationOri.transform.localEulerAngles.z)
-            {
-
-                door_in_use = false;
-                StopCoroutine(DoorStartUsing);
-            }
-            if (Angle != RotationOri.transform.localEulerAngles.y)
-            {
-                goto repeatLoop; 
-            }
-        }
-        if (Angle < 0)
-        {
-
-            RotationOri.transform.Rotate(new Vector3(0, 0, -95 * Time.deltaTime));
-
-            if ((360+Angle) > RotationOri.transform.localEulerAngles.z)
-            {
-
-                door_in_use = false;
-                StopCoroutine(DoorStartUsing);
-            }
-            if (Angle != RotationOri.transform.localEulerAngles.y)
-            {
-                
-                goto repeatLoop;
-            }
-        }
-
-        
-        
-    }
-
-
-
-    public IEnumerator CloseDoor(int Angle, GameObject currentDoor,int OpenValue, GameObject RotationOri)
-    {
-        repeatLoop:
-        yield return new WaitForSeconds(0.008f);
-
-       
-
-
-        if (OpenValue == 88)
-        {
-
-            RotationOri.transform.Rotate(new Vector3(0, 0, -95 * Time.deltaTime));
-           
-
-            if ((Angle+2) > RotationOri.transform.localEulerAngles.z)
-            {
-
-                door_in_use = false;
-                RotationOri.transform.localEulerAngles = new Vector3(RotationOri.transform.localEulerAngles.x, RotationOri.transform.localEulerAngles.y, Angle);
-                StopCoroutine(DoorStartUsing);
-            }
-            if (Angle != RotationOri.transform.localEulerAngles.z)
-            {
-                goto repeatLoop;
-            }
-        }
-        if (OpenValue == -88)
-        {
-
-            RotationOri.transform.Rotate(new Vector3(0, 0, 95 * Time.deltaTime));
-            
-            if (RotationOri.transform.localEulerAngles.z > 358)
-            {
-
-                door_in_use = false;
-                RotationOri.transform.localEulerAngles = new Vector3(RotationOri.transform.localEulerAngles.x, RotationOri.transform.localEulerAngles.y, Angle);
-                StopCoroutine(DoorStartUsing);
-            }
-            if (Angle != RotationOri.transform.localEulerAngles.z)
-            {
-
-                goto repeatLoop;
-            }
-        }
-
-
-
-
-        if (Angle != RotationOri.transform.localEulerAngles.z)
-        {
-            goto repeatLoop;
-        }
-
-    }
-
 }
