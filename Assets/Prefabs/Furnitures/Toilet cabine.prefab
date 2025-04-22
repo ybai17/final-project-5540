@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4175209461173733865}
   - component: {fileID: 5599800152297184387}
   - component: {fileID: 8759256600193166497}
+  - component: {fileID: 7872860841267021860}
   m_Layer: 0
   m_Name: Toilet cabine.001
   m_TagString: door
@@ -28,14 +29,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2185598961281830769}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0.009458441, y: -0.005455775, z: 0.023538874}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4867989319108630986}
   m_Father: {fileID: 1487625137121766116}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!33 &7643586112178008614
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -106,7 +107,7 @@ MeshCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
@@ -127,9 +128,30 @@ MonoBehaviour:
   - Door: {fileID: 2185598961281830769}
     CloseValue: 0
     OpenValue: 90
-    isDoorOpen: 0
+    isDoorOpen: 1
     RotationOrigin: {fileID: 2185598961281830769}
   door_in_use: 0
+--- !u!65 &7872860841267021860
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2185598961281830769}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.0007400584, y: 0.010002512, z: 0.020718748}
+  m_Center: {x: 0.00006946802, y: 0.0048628934, z: -0.011965047}
 --- !u!1 &6462329172618047382
 GameObject:
   m_ObjectHideFlags: 0
@@ -266,14 +288,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8966159088475097468}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.7071067, z: 0.7071068, w: 0}
+  m_LocalRotation: {x: 0, y: 0.7069834, z: 0.7072302, w: 0}
   m_LocalPosition: {x: 57.47, y: 0.13194466, z: -72.37}
   m_LocalScale: {x: 200, y: 199.99991, z: 199.99991}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8030061079932103761}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -89.98, y: 0, z: 180}
 --- !u!33 &4352475754997767802
 MeshFilter:
   m_ObjectHideFlags: 0
