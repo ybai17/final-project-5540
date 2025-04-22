@@ -34,7 +34,7 @@ public class MenuBehavior : MonoBehaviour
     public void NewGame()
     {
         PlayerPrefs.SetInt("CurrentLevel", 1);
-        SceneManager.LoadScene("Level1Office");
+        SceneManager.LoadScene(1);
     }
 
     public void ContinueGame()
