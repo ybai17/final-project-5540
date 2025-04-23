@@ -70,7 +70,7 @@ ModelImporter:
     - 0.25
     - 0.125
     - 0.01
-    globalScale: 2
+    globalScale: 1.2
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
@@ -452,212 +452,212 @@ ModelImporter:
       scale: {x: 1, y: 1, z: 1}
     - name: genSuit_Reference
       parentName: genSuit@Orc Idle(Clone)
-      position: {x: 0.05373966, y: -0.0027685547, z: 0.42220396}
+      position: {x: 0.00032243796, y: -0.00001661133, z: 0.002533224}
       rotation: {x: -0.10267122, y: 0.034669016, z: 0.009604299, w: 0.9940646}
       scale: {x: 1, y: 1, z: 1}
     - name: genSuit_Hips
       parentName: genSuit_Reference
-      position: {x: 0.0012836084, y: 2.2393458, z: 0.021950483}
+      position: {x: 0.00000770165, y: 0.013436075, z: 0.00013170291}
       rotation: {x: 0.10267123, y: -0.034669016, z: -0.009604299, w: 0.9940646}
       scale: {x: 0.9999998, y: 1, z: 1}
     - name: genSuit_LeftUpLeg
       parentName: genSuit_Hips
-      position: {x: -0.19017862, y: -0.13382004, z: 0}
+      position: {x: -0.0011410718, y: -0.00080292026, z: 0}
       rotation: {x: -0.0019160211, y: 0.00014982745, z: -0.07898641, w: 0.9968739}
       scale: {x: 1.0000001, y: 1, z: 1}
     - name: genSuit_LeftLeg
       parentName: genSuit_LeftUpLeg
-      position: {x: -0.00000009770369, y: -0.87534165, z: -0.07508256}
+      position: {x: -5.862222e-10, y: -0.00525205, z: -0.0004504954}
       rotation: {x: 0.0036559324, y: 0.0000037928544, z: -0.00004638568, w: 0.9999934}
       scale: {x: 0.99999994, y: 1.0000002, z: 1}
     - name: genSuit_LeftFoot
       parentName: genSuit_LeftLeg
-      position: {x: 0.000000049410037, y: -0.9705927, z: -0.077666685}
+      position: {x: 2.9646025e-10, y: -0.005823556, z: -0.00046600014}
       rotation: {x: 0.006898635, y: -0.10856186, z: 0.07874627, w: 0.9909419}
       scale: {x: 0.99999976, y: 1, z: 1}
     - name: genSuit_LeftToeBase
       parentName: genSuit_LeftFoot
-      position: {x: -0.00000019144471, y: -0.17675908, z: 0.2457383}
+      position: {x: -0.0000000011486683, y: -0.0010605545, z: 0.0014744297}
       rotation: {x: 0.0000000013969835, y: -0, z: -0.0000000035506664, w: 1}
       scale: {x: 1.0000001, y: 1, z: 1.0000006}
     - name: genSuit_Spine
       parentName: genSuit_Hips
-      position: {x: -0, y: 0.25445786, z: 0}
+      position: {x: -0, y: 0.0015267472, z: 0}
       rotation: {x: -0.0000000074505797, y: -0, z: 2.3283062e-10, w: 1}
       scale: {x: 1.0000001, y: 1, z: 1}
     - name: genSuit_Spine1
       parentName: genSuit_Spine
-      position: {x: -0, y: 0.2998082, z: 0}
+      position: {x: -0, y: 0.0017988492, z: 0}
       rotation: {x: -0.000000029802319, y: 1.38777845e-17, z: -9.3132246e-10, w: 1}
       scale: {x: 1, y: 0.99999994, z: 1.0000001}
     - name: genSuit_LeftShoulder
       parentName: genSuit_Spine1
-      position: {x: -0.14941081, y: 0.43945006, z: -3.5527136e-17}
+      position: {x: -0.0008964649, y: 0.0026367004, z: -2.1316283e-19}
       rotation: {x: -0.00000082705697, y: -0.07006977, z: 0.00000000833102, w: 0.9975421}
       scale: {x: 1, y: 0.9999998, z: 1.0000004}
     - name: genSuit_LeftArm
       parentName: genSuit_LeftShoulder
-      position: {x: -0.28, y: 0.0000030517576, z: -0.000000014305114}
+      position: {x: -0.00168, y: 0.000000018310546, z: -8.58307e-11}
       rotation: {x: -0.02768797, y: 0.06725976, z: 0.032864727, w: 0.99680966}
       scale: {x: 1.0000006, y: 1.0000004, z: 0.99999964}
     - name: genSuit_LeftForeArm
       parentName: genSuit_LeftArm
-      position: {x: -0.48806486, y: 1.7053025e-15, z: 0.0000000143303245}
+      position: {x: -0.0029283892, y: 1.0231816e-17, z: 8.598195e-11}
       rotation: {x: -0.0054225996, y: 0.032253593, z: -0.010459684, w: 0.9994103}
       scale: {x: 1, y: 1.0000001, z: 1.0000002}
     - name: genSuit_LeftHand
       parentName: genSuit_LeftForeArm
-      position: {x: -0.595347, y: 0.020036599, z: 0.009258006}
+      position: {x: -0.003572082, y: 0.00012021958, z: 0.000055548036}
       rotation: {x: -0.00000003260442, y: -0.000000029802322, z: -0.000000035026293, w: 1}
       scale: {x: 1.0000002, y: 0.9999999, z: 1.0000004}
     - name: genSuit_LeftHandThumb1
       parentName: genSuit_LeftHand
-      position: {x: -0.047654018, y: -0.030139, z: 0.08269461}
+      position: {x: -0.0002859241, y: -0.00018083402, z: 0.0004961677}
       rotation: {x: -0.32892308, y: 0.46710676, z: 0.19043168, w: 0.7983463}
       scale: {x: 1.0000006, y: 1.0000007, z: 1.0000008}
     - name: genSuit_LeftHandThumb2
       parentName: genSuit_LeftHandThumb1
-      position: {x: -0.07400112, y: 0.002203798, z: -0.02244825}
+      position: {x: -0.00044400673, y: 0.000013222788, z: -0.0001346895}
       rotation: {x: 0.030851804, y: 0.3676578, z: -0.083909, w: 0.92565393}
       scale: {x: 1.0000004, y: 1.0000005, z: 1.0000008}
     - name: genSuit_LeftHandThumb3
       parentName: genSuit_LeftHandThumb2
-      position: {x: -0.027909245, y: -0.010571806, z: -0.056765355}
+      position: {x: -0.00016745547, y: -0.00006343084, z: -0.00034059215}
       rotation: {x: 9.3132235e-10, y: 0.000000014901158, z: 2.3283059e-10, w: 1}
       scale: {x: 0.9999995, y: 1.0000005, z: 1}
     - name: genSuit_LeftHandIndex1
       parentName: genSuit_LeftHand
-      position: {x: -0.17551021, y: 0.008134734, z: 0.09724522}
+      position: {x: -0.0010530613, y: 0.000048808404, z: 0.00058347126}
       rotation: {x: -0.002014234, y: -0.024491062, z: -0.06703155, w: 0.9974482}
       scale: {x: 1, y: 1.0000004, z: 0.9999999}
     - name: genSuit_LeftHandIndex2
       parentName: genSuit_LeftHandIndex1
-      position: {x: -0.10063547, y: -0.023107393, z: 0.01875541}
+      position: {x: -0.00060381286, y: -0.00013864436, z: 0.000112532456}
       rotation: {x: -0.014883806, y: -0.020039178, z: -0.10453905, w: 0.9942075}
       scale: {x: 1.0000004, y: 1.0000004, z: 1.0000002}
     - name: genSuit_LeftHandIndex3
       parentName: genSuit_LeftHandIndex2
-      position: {x: -0.04869099, y: -0.027709054, z: 0.012242552}
+      position: {x: -0.00029214594, y: -0.00016625432, z: 0.00007345531}
       rotation: {x: -0.0000084452295, y: 0.00013793519, z: -0.06101256, w: 0.99813706}
       scale: {x: 1.0000002, y: 1, z: 0.99999976}
     - name: genSuit_LeftHandMiddle1
       parentName: genSuit_LeftHand
-      position: {x: -0.16922994, y: 0.0056390334, z: 0.00546124}
+      position: {x: -0.0010153798, y: 0.0000338342, z: 0.000032767442}
       rotation: {x: -0.0033480711, y: -0.0035134824, z: -0.13836855, w: 0.9903689}
       scale: {x: 0.9999999, y: 1.0000002, z: 0.9999999}
     - name: genSuit_LeftHandMiddle2
       parentName: genSuit_LeftHandMiddle1
-      position: {x: -0.11213129, y: -0.04752665, z: 0.00513642}
+      position: {x: -0.0006727877, y: -0.0002851599, z: 0.000030818523}
       rotation: {x: -0.0012441344, y: -0.01880683, z: -0.20117883, w: 0.97937316}
       scale: {x: 1.0000004, y: 1.0000002, z: 0.99999976}
     - name: genSuit_LeftHandMiddle3
       parentName: genSuit_LeftHandMiddle2
-      position: {x: -0.042676855, y: -0.05067553, z: 0.00500125}
+      position: {x: -0.00025606112, y: -0.0003040532, z: 0.000030007503}
       rotation: {x: -0, y: -0, z: -1.8780505e-19, w: 1}
       scale: {x: 0.9999999, y: 1.0000001, z: 1}
     - name: genSuit_AttachHandLeft
       parentName: genSuit_LeftHand
-      position: {x: -0.17153318, y: -0.07626419, z: 0.043340564}
+      position: {x: -0.0010291991, y: -0.00045758512, z: 0.0002600434}
       rotation: {x: -0.000000040991527, y: -0.7071069, z: -0.00000006545898, w: 0.70710677}
       scale: {x: 1.0000002, y: 1.0000004, z: 1.0000007}
     - name: genSuit_Neck
       parentName: genSuit_Spine1
-      position: {x: -7.913805e-33, y: 0.5726593, z: 0.034692403}
+      position: {x: -4.7482826e-35, y: 0.0034359563, z: 0.00020815442}
       rotation: {x: 0.000000029802319, y: -1.873501e-16, z: 0.000000005587935, w: 1}
       scale: {x: 1, y: 0.9999998, z: 1.0000004}
     - name: genSuit_Head
       parentName: genSuit_Neck
-      position: {x: 5.0132604e-33, y: 0.2474414, z: 0.07964129}
+      position: {x: 3.0079563e-35, y: 0.0014846484, z: 0.0004778478}
       rotation: {x: -0, y: -1.3234888e-23, z: 5.583467e-24, w: 1}
       scale: {x: 1, y: 1, z: 0.99999976}
     - name: genSuit_RightShoulder
       parentName: genSuit_Spine1
-      position: {x: 0.1494108, y: 0.43945396, z: -3.55272e-17}
+      position: {x: 0.00089646486, y: 0.002636724, z: -2.1316319e-19}
       rotation: {x: 0.99754214, y: 0.0000000012116012, z: -0.07006977, w: 0.00000084137946}
       scale: {x: 1.0000001, y: 1.000001, z: 1.0000011}
     - name: genSuit_RightArm
       parentName: genSuit_RightShoulder
-      position: {x: 0.28000066, y: -0.000000035523236, z: -0.00000011723866}
+      position: {x: 0.0016800038, y: -2.1313944e-10, z: -7.0343203e-10}
       rotation: {x: -0.02768831, y: 0.067259915, z: 0.032860346, w: 0.9968097}
       scale: {x: 1.0000002, y: 1.0000007, z: 1.0000004}
     - name: genSuit_RightForeArm
       parentName: genSuit_RightArm
-      position: {x: 0.4880653, y: 0.0000037356783, z: 0.00000034050586}
+      position: {x: 0.0029283918, y: 0.000000022414069, z: 0.000000002043035}
       rotation: {x: -0.0054225866, y: 0.032252237, z: -0.010452988, w: 0.99941045}
       scale: {x: 1.0000001, y: 1.0000007, z: 1.000001}
     - name: genSuit_RightHand
       parentName: genSuit_RightForeArm
-      position: {x: 0.59534496, y: -0.020042188, z: -0.009258983}
+      position: {x: 0.0035720698, y: -0.000120253135, z: -0.000055553905}
       rotation: {x: -0.000000028948321, y: -0.00000005960463, z: -0.00000008013382, w: 1}
       scale: {x: 1.0000002, y: 1.0000012, z: 1.0000008}
     - name: genSuit_RightHandThumb1
       parentName: genSuit_RightHand
-      position: {x: 0.047651563, y: 0.030133812, z: -0.082695566}
+      position: {x: 0.0002859094, y: 0.00018080288, z: -0.0004961734}
       rotation: {x: -0.32893065, y: 0.46715537, z: 0.19037852, w: 0.7983274}
       scale: {x: 0.9999995, y: 1.0000011, z: 0.99999976}
     - name: genSuit_RightHandThumb2
       parentName: genSuit_RightHandThumb1
-      position: {x: 0.07400622, y: -0.0022000729, z: 0.02246514}
+      position: {x: 0.00044403735, y: -0.000013200437, z: 0.00013479085}
       rotation: {x: 0.030834012, y: 0.36750555, z: -0.083871536, w: 0.9257184}
       scale: {x: 1.0000005, y: 1.0000008, z: 1.0000012}
     - name: genSuit_RightHandThumb3
       parentName: genSuit_RightHandThumb2
-      position: {x: 0.027910754, y: 0.010569378, z: 0.056749742}
+      position: {x: 0.00016746453, y: 0.00006341627, z: 0.00034049846}
       rotation: {x: 0.000000021420417, y: 0.000000014901159, z: -0.00000002677552, w: 1}
       scale: {x: 1.0000002, y: 1.0000012, z: 1.0000002}
     - name: genSuit_RightHandIndex1
       parentName: genSuit_RightHand
-      position: {x: 0.17551525, y: -0.008126018, z: -0.097242706}
+      position: {x: 0.0010530916, y: -0.00004875611, z: -0.00058345625}
       rotation: {x: -0.0020103378, y: -0.024493866, z: -0.06697956, w: 0.99745166}
       scale: {x: 0.9999995, y: 1.0000005, z: 1.000001}
     - name: genSuit_RightHandIndex2
       parentName: genSuit_RightHandIndex1
-      position: {x: 0.100628525, y: 0.023096541, z: -0.018758645}
+      position: {x: 0.0006037711, y: 0.00013857926, z: -0.000112551876}
       rotation: {x: -0.014916198, y: -0.020006664, z: -0.10463784, w: 0.99419725}
       scale: {x: 1.0000007, y: 1.0000021, z: 1.0000023}
     - name: genSuit_RightHandIndex3
       parentName: genSuit_RightHandIndex2
-      position: {x: 0.048698157, y: 0.027720213, z: -0.012240473}
+      position: {x: 0.00029218895, y: 0.00016632128, z: -0.00007344284}
       rotation: {x: -0.000008430697, y: 0.00013792561, z: -0.061012592, w: 0.998137}
       scale: {x: 1, y: 0.9999988, z: 0.99999857}
     - name: genSuit_RightHandMiddle1
       parentName: genSuit_RightHand
-      position: {x: 0.16923441, y: -0.005629745, z: -0.0054594097}
+      position: {x: 0.0010154066, y: -0.000033778466, z: -0.00003275646}
       rotation: {x: -0.0033453465, y: -0.0035183795, z: -0.13832848, w: 0.9903745}
       scale: {x: 1, y: 1.0000006, z: 1.0000014}
     - name: genSuit_RightHandMiddle2
       parentName: genSuit_RightHandMiddle1
-      position: {x: 0.11212937, y: 0.04752275, z: -0.0051372205}
+      position: {x: 0.0006727762, y: 0.0002851365, z: -0.000030823325}
       rotation: {x: -0.0012422878, y: -0.018815074, z: -0.20116813, w: 0.9793752}
       scale: {x: 1.0000008, y: 1.0000019, z: 1.0000015}
     - name: genSuit_RightHandMiddle3
       parentName: genSuit_RightHandMiddle2
-      position: {x: 0.042673614, y: 0.05066681, z: -0.0050023473}
+      position: {x: 0.0002560417, y: 0.00030400086, z: -0.000030014084}
       rotation: {x: -0, y: -0, z: -1.6147732e-15, w: 1}
       scale: {x: 1.0000002, y: 1.0000002, z: 1.0000005}
     - name: genSuit_AttachHandRight
       parentName: genSuit_RightHand
-      position: {x: 0.17153586, y: 0.076270886, z: -0.043339513}
+      position: {x: 0.0010292153, y: 0.00045762534, z: -0.00026003708}
       rotation: {x: 0.00000004043714, y: -0.7071068, z: 0.000000008863752, w: 0.7071068}
       scale: {x: 1.0000006, y: 1.0000005, z: 1.0000005}
     - name: genSuit_RightUpLeg
       parentName: genSuit_Hips
-      position: {x: 0.1901786, y: -0.13382, z: 0}
+      position: {x: 0.0011410717, y: -0.00080292, z: 0}
       rotation: {x: 0.99687386, y: 0.07898639, z: 0.00014984794, w: 0.00191602}
       scale: {x: 1, y: 1.0000002, z: 1.0000007}
     - name: genSuit_RightLeg
       parentName: genSuit_RightUpLeg
-      position: {x: 0.00000085531997, y: 0.8753418, z: 0.075082526}
+      position: {x: 0.0000000051319202, y: 0.005252051, z: 0.00045049514}
       rotation: {x: 0.0036559298, y: 0.0000037510035, z: -0.000046387315, w: 0.9999934}
       scale: {x: 1, y: 1.000001, z: 1.0000005}
     - name: genSuit_RightFoot
       parentName: genSuit_RightLeg
-      position: {x: -0.0000003116039, y: 0.9705927, z: 0.07766671}
+      position: {x: -0.0000000018696236, y: 0.005823556, z: 0.00046600023}
       rotation: {x: 0.006898643, y: -0.108561814, z: 0.07874626, w: 0.9909419}
       scale: {x: 0.9999999, y: 1.0000018, z: 1.0000015}
     - name: genSuit_RightToeBase
       parentName: genSuit_RightFoot
-      position: {x: -0.0000011329328, y: 0.17675905, z: -0.24573798}
+      position: {x: -0.0000000067975976, y: 0.0010605543, z: -0.001474428}
       rotation: {x: 9.3132235e-10, y: -0, z: -0.0000000030267977, w: 1}
       scale: {x: 1.0000004, y: 1.0000005, z: 1.0000002}
     armTwist: 0.5
@@ -667,7 +667,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 2
+    globalScale: 0.012
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 1

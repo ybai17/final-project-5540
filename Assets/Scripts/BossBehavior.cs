@@ -8,10 +8,10 @@ public class BossBehavior : MonoBehaviour
     public Transform target;
 
     public enum BossState {
-        Resting,
-        Approaching,
-        Attacking,
-        Dying,
+        Resting = 0,
+        Approaching = 1,
+        Attacking = 2,
+        Dying = 3,
     }
 
     public BossState currentState;
@@ -36,6 +36,7 @@ public class BossBehavior : MonoBehaviour
         animator = transform.GetChild(0).GetComponent<Animator>();
 
         currentState = BossState.Resting;
+        animator.SetInteger("animState", 0);
         isDying = false;
         currentHP = maxHP;
 
@@ -110,6 +111,7 @@ public class BossBehavior : MonoBehaviour
         animator.SetTrigger("DieTrigger");
 
         transform.rotation = Quaternion.Euler(new Vector3(0, 0, 90));
+        animator.SetInteger("animState", 3);
 
         AudioSource.PlayClipAtPoint(deathSound, transform.position, 100);
         

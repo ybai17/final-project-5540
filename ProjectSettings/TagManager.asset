@@ -12,6 +12,7 @@ TagManager:
   - Level1Objective
   - Projectile
   - Boss
+  - door
   layers:
   - Default
   - TransparentFX
@@ -19,7 +20,7 @@ TagManager:
   - office
   - Water
   - UI
-  - 
+  - Wall
   - 
   - 
   - 
