@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -50,35 +51,42 @@ public class BossBehavior : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+   void Update()
+{
+    //Debug only
+    if (Input.GetKeyDown(KeyCode.F))
+        TakeDamage(5);
+
+    switch (currentState)
     {
-        //Debug only
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            TakeDamage(5);
-        }
-
-        switch (currentState)
-        {
-            case BossState.Resting:
-                Rest();
-                break;
-            case BossState.Approaching:
-                Approach();
-                break;
-            case BossState.Attacking:
-                Attack();
-                break;
-            case BossState.Dying:
-                Die();
-                break;
-        }
+        case BossState.Resting:
+            Rest();
+            break;
+        case BossState.Approaching:
+            Approach();
+            break;
+        case BossState.Attacking:
+            Attack();
+            break;
+        case BossState.Dying:
+            Die();
+            break;
     }
+}
 
-    void Rest()
+void Rest()
+{
+    // Force Idle anim (animState = 0)
+    animator.SetInteger("animState", 0);
+
+    // Only switch out of Idle when you want to start moving
+    float dist = Vector3.Distance(transform.position, target.position);
+    if (dist <= attackRange)
     {
         currentState = BossState.Approaching;
+        animator.SetInteger("animState", 1); // Walk once we leave Idle
     }
+}
 
     void Approach()
     {
