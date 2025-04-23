@@ -17,6 +17,14 @@ public class LevelManager : MonoBehaviour
         {
             currentLevel = 1;
         }
+        if (SceneManager.GetActiveScene().name == "Level2Yilei")
+        {
+            currentLevel = 2;
+        }
+        if (SceneManager.GetActiveScene().name == "Level3")
+        {
+            currentLevel = 3;
+        }
     }
 
     public void LevelLost()
@@ -40,10 +48,11 @@ public class LevelManager : MonoBehaviour
             PlayerPrefs.SetInt("CurrentLevel", 0);
             SceneManager.LoadScene(currentLevel);
         }
+        else {
+            currentLevel += 1;
 
-        currentLevel += 1;
-
-        SceneManager.LoadScene(currentLevel);
+            SceneManager.LoadScene(currentLevel);
+        }
     }
 
     void ReloadSameScene()

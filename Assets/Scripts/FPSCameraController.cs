@@ -5,6 +5,7 @@ public class FPSCameraController : MonoBehaviour
 {
     [Header("Look Settings")]
     public float mouseSens = 500f;
+    float mouseSensMultiplier;
     public float minPitch = -90f;
     public float maxPitch = 90f;
 
@@ -21,6 +22,13 @@ public class FPSCameraController : MonoBehaviour
 
     void Start()
     {
+        mouseSensMultiplier = PlayerPrefs.GetFloat("MouseSensitivity");
+
+        if (mouseSensMultiplier == 0)
+        {
+            mouseSensMultiplier = 1f;
+        }
+
         player = transform.parent;
         inventoryManager = player.GetComponent<PlayerInventoryManager>();
 
@@ -33,8 +41,8 @@ public class FPSCameraController : MonoBehaviour
 
     void Update()
     {
-        float moveX = Input.GetAxis("Mouse X") * mouseSens * Time.deltaTime;
-        float moveY = Input.GetAxis("Mouse Y") * mouseSens * Time.deltaTime;
+        float moveX = Input.GetAxis("Mouse X") * mouseSens * mouseSensMultiplier * Time.deltaTime;
+        float moveY = Input.GetAxis("Mouse Y") * mouseSens * mouseSensMultiplier * Time.deltaTime;
 
         player.Rotate(Vector3.up, moveX);
         pitch -= moveY;

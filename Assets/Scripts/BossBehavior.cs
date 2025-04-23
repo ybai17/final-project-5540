@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -132,6 +131,8 @@ public class BossBehavior : MonoBehaviour
         AudioSource.PlayClipAtPoint(deathSound, transform.position, 100);
 
         Destroy(gameObject, 2);
+
+        GameObject.Find("Level").GetComponent<LevelManager>().LevelWon();
     }
 
     void CheckIfCanAttack()
