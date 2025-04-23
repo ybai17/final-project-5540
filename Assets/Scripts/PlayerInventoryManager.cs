@@ -1,17 +1,25 @@
 using UnityEngine;
 using System.Collections.Generic;
 
+
+/// Manages a multi-slot hand inventory: picking up items into the first free slot,
+/// and using (removing) items from their slot without ever stacking or duplicating.
 public class PlayerInventoryManager : MonoBehaviour
 {
     [Header("Inventory Slots (assign in Inspector)")]
-    public Transform[] handItemSlots;    // Multiple slot pivots
+    [Tooltip("Each slot is a empty Transform under which one item can be parented.")]
+    public Transform[] handItemSlots;
 
-    // Track items in hand per slot
-    public static List<GameObject> CurrentItemsInHand { get; private set; } = new List<GameObject>();
+    
+    /// The list of item instances currently in the player's hand.
+    /// Always mirrors exactly the children under handItemSlots.
+
+    public static List<GameObject> CurrentItemsInHand { get; private set; }
+        = new List<GameObject>();
 
     void Start()
     {
-        // Deactivate all slot parents initially
+        // Deactivate all slot parents initially (they become visible once holding an item)
         foreach (var slot in handItemSlots)
         {
             if (slot != null)
@@ -19,90 +27,100 @@ public class PlayerInventoryManager : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Attempts to place pickup into the first available slot.
-    /// </summary>
+   
+    /// Pick up the given world-space pickup. Its prefab is instantiated into
+    /// the first empty slot (i.e. slot.childCount == 0).  Cleans up any null
+    /// entries before proceeding so the list stays in sync.
+   
     public void AcquireItem(GameObject pickup)
     {
         if (pickup == null)
         {
-            Debug.LogError("[Inventory] Pickup is null!");
+            Debug.LogError("[Inventory] AcquireItem: pickup argument is null.");
             return;
         }
 
-        // Find first empty slot
+        // Remove any destroyed items from our list
+        CurrentItemsInHand.RemoveAll(item => item == null);
+
+        // Find the first empty slot
         for (int i = 0; i < handItemSlots.Length; i++)
         {
             var slot = handItemSlots[i];
             if (slot == null) continue;
 
-            // Consider empty if no children
             if (slot.childCount == 0)
             {
-                // Instantiate the item prefab at slot
-                var prefab = pickup.GetComponent<KeyPickupBehavior>()?.prefab;
-                if (prefab == null)
+                // Get the prefab from the pickup's KeyPickupBehavior
+                var behavior = pickup.GetComponent<KeyPickupBehavior>();
+                if (behavior == null || behavior.prefab == null)
                 {
-                    Debug.LogError("[Inventory] No prefab found on pickup!");
+                    Debug.LogError($"[Inventory] Slot {i}: pickup has no prefab!");
                     return;
                 }
 
-                GameObject clone = Instantiate(prefab,
-                    slot.position,
-                    slot.rotation);
+                // Instantiate and parent under slot
+                GameObject clone = Instantiate(behavior.prefab);
+                clone.transform.SetParent(slot);
+                clone.transform.localPosition = Vector3.zero;
+                clone.transform.localRotation = Quaternion.identity;
 
-                // Mark original as picked up
-                pickup.GetComponent<KeyPickupBehavior>()?.PickedUp();
-
-                // Remove physics if any
+                // Remove any Rigidbody so it stays exactly at the slot
                 var rb = clone.GetComponent<Rigidbody>();
                 if (rb != null) Destroy(rb);
 
-                // Parent under slot and activate
-                clone.transform.SetParent(slot);
+                // Notify the pickup that it was collected
+                behavior.PickedUp();
+
+                // Show the slot (slot's GameObject was hidden by default)
                 slot.gameObject.SetActive(true);
 
-                // Track in inventory list
+                // Track it
                 CurrentItemsInHand.Add(clone);
-
                 return;
             }
         }
 
-        Debug.Log("[Inventory] No available slot to pick up item.");
+        Debug.Log("[Inventory] All slots occupied—cannot pick up new item.");
     }
 
     /// <summary>
-    /// Uses (removes) the specified item from inventory.
+    /// Uses (consumes) the specified item. It must be one of the
+    /// GameObjects previously instantiated into a slot.
     /// </summary>
     public void UseItem(GameObject item)
     {
         if (item == null)
         {
-            Debug.LogError("[Inventory] No item specified to use.");
+            Debug.LogError("[Inventory] UseItem: item argument is null.");
             return;
         }
 
-        // Find item in slots
+        // Clean up any destroyed entries
+        CurrentItemsInHand.RemoveAll(x => x == null);
+
+        // Find the slot containing this item
         for (int i = 0; i < handItemSlots.Length; i++)
         {
             var slot = handItemSlots[i];
-            if (slot == null) continue;
+            if (slot == null || slot.childCount == 0) continue;
 
-            if (slot.childCount > 0)
+            var child = slot.GetChild(0).gameObject;
+            if (child == item)
             {
-                var child = slot.GetChild(0).gameObject;
-                if (child == item)
-                {
-                    // Destroy and clear
-                    Destroy(child);
-                    slot.gameObject.SetActive(false);
-                    CurrentItemsInHand.Remove(item);
-                    return;
-                }
+                // Destroy the instance
+                Destroy(child);
+
+                // Hide the slot again
+                slot.gameObject.SetActive(false);
+
+                // Remove from our tracking list
+                CurrentItemsInHand.Remove(item);
+                return;
             }
         }
 
-        Debug.LogWarning("[Inventory] Tried to use item not in any slot.");
+        Debug.LogWarning("[Inventory] Tried to use an item not present in any slot.");
     }
 }
+
