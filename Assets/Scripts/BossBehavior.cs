@@ -1,4 +1,5 @@
 using Unity.VisualScripting;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,7 +9,8 @@ public class BossBehavior : MonoBehaviour
 
     public Transform target;
 
-    public enum BossState {
+    public enum BossState
+    {
         Resting = 0,
         Approaching = 1,
         Attacking = 2,
@@ -18,6 +20,7 @@ public class BossBehavior : MonoBehaviour
     public BossState currentState;
 
     public Slider healthSlider;
+    public TextMeshProUGUI healthText;
     public float maxHP = 100f;
     public float currentHP;
     public float moveSpeed = 2f;
@@ -48,51 +51,56 @@ public class BossBehavior : MonoBehaviour
                                      .transform.GetChild(1)
                                      .gameObject.GetComponent<Slider>();
         }
+        if (healthText == null)
+        {
+            var go = GameObject.Find("BossHealthText_TMP");
+            if (go) healthText = go.GetComponent<TextMeshProUGUI>();
+        }
+        UpdateHealthText();
     }
 
     // Update is called once per frame
-   void Update()
-{
-    //Debug only
-    if (Input.GetKeyDown(KeyCode.F))
-        TakeDamage(5);
-
-    switch (currentState)
+    void Update()
     {
-        case BossState.Resting:
-            Rest();
-            break;
-        case BossState.Approaching:
-            Approach();
-            break;
-        case BossState.Attacking:
-            Attack();
-            break;
-        case BossState.Dying:
-            Die();
-            break;
+        //Debug only
+        if (Input.GetKeyDown(KeyCode.F))
+            TakeDamage(5);
+
+        switch (currentState)
+        {
+            case BossState.Resting:
+                Rest();
+                break;
+            case BossState.Approaching:
+                Approach();
+                break;
+            case BossState.Attacking:
+                Attack();
+                break;
+            case BossState.Dying:
+                Die();
+                break;
+        }
     }
-}
 
-void Rest()
-{
-    // Force Idle anim (animState = 0)
-    animator.SetInteger("animState", 0);
-
-    // Only switch out of Idle when you want to start moving
-    float dist = Vector3.Distance(transform.position, target.position);
-    if (dist <= attackRange)
+    void Rest()
     {
-        currentState = BossState.Approaching;
-        animator.SetInteger("animState", 1); // Walk once we leave Idle
+        // Force Idle anim (animState = 0)
+        animator.SetInteger("animState", 0);
+
+        // Only switch out of Idle when you want to start moving
+        float dist = Vector3.Distance(transform.position, target.position);
+        if (dist <= attackRange)
+        {
+            currentState = BossState.Approaching;
+            animator.SetInteger("animState", 1); // Walk once we leave Idle
+        }
     }
-}
 
     void Approach()
     {
         Vector3 groundedTarget = target.position;
         groundedTarget.y = 0.5f;
-
         transform.position = Vector3.MoveTowards(transform.position, groundedTarget, moveSpeed * Time.deltaTime);
         transform.LookAt(groundedTarget);
 
@@ -122,7 +130,7 @@ void Rest()
         animator.SetInteger("animState", 3);
 
         AudioSource.PlayClipAtPoint(deathSound, transform.position, 100);
-        
+
         Destroy(gameObject, 2);
     }
 
@@ -130,7 +138,7 @@ void Rest()
     {
         Collider[] colliders = Physics.OverlapSphere(transform.position, attackRange);
 
-        foreach(Collider curr in colliders)
+        foreach (Collider curr in colliders)
         {
             if (curr.gameObject.CompareTag("Player"))
             {
@@ -145,6 +153,7 @@ void Rest()
         currentHP = Mathf.Clamp(currentHP, 0, 100);
 
         healthSlider.value = currentHP;
+        UpdateHealthText();
 
         if (currentHP <= 0)
         {
@@ -169,4 +178,9 @@ void Rest()
             AudioSource.PlayClipAtPoint(punchSound, transform.position);
         }
     }
+    void UpdateHealthText()
+{
+    if (healthText != null)
+        healthText.text = $"{currentHP:0} %";
+}
 }
