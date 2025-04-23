@@ -13,13 +13,10 @@ public class LevelManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (SceneManager.GetActiveScene().name == "Level1Office")
+        {
+            currentLevel = 1;
+        }
     }
 
     public void LevelLost()
@@ -37,7 +34,9 @@ public class LevelManager : MonoBehaviour
 
         //Invoke("ReloadSameScene", 5);
 
-        SceneManager.LoadScene(1);
+        currentLevel += 1;
+
+        SceneManager.LoadScene(currentLevel);
     }
 
     void ReloadSameScene()
