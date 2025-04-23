@@ -34,6 +34,13 @@ public class LevelManager : MonoBehaviour
 
         //Invoke("ReloadSameScene", 5);
 
+        if (currentLevel == 3)
+        {
+            currentLevel = 0;
+            PlayerPrefs.SetInt("CurrentLevel", 0);
+            SceneManager.LoadScene(currentLevel);
+        }
+
         currentLevel += 1;
 
         SceneManager.LoadScene(currentLevel);

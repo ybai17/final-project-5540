@@ -18,12 +18,7 @@ public class Level3PlayerController : MonoBehaviour
 
             GameObject.FindGameObjectWithTag("UI").GetComponent<Level3CanvasBehavior>().StartFadeOut();
 
-            Invoke("CallLevelLost", 3);
+            GameObject.Find("Level").GetComponent<LevelManager>().LevelLost();
         }
-    }
-
-    void CallLevelLost()
-    {
-        GameObject.Find("Level").GetComponent<LevelManager>().LevelLost();
     }
 }
