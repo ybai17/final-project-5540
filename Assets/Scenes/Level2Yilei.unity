@@ -2518,10 +2518,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2382159242693752890, guid: d092215ce49ec4a689f32e9510df0636, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3123755455968077243, guid: d092215ce49ec4a689f32e9510df0636, type: 3}
       propertyPath: healthSlider
       value: 
       objectReference: {fileID: 875324647}
+    - target: {fileID: 6947997544995421095, guid: d092215ce49ec4a689f32e9510df0636, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8257874095979390701, guid: d092215ce49ec4a689f32e9510df0636, type: 3}
+      propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8642141471145812544, guid: d092215ce49ec4a689f32e9510df0636, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.85
@@ -2565,6 +2577,14 @@ PrefabInstance:
     - target: {fileID: 8981546883371579642, guid: d092215ce49ec4a689f32e9510df0636, type: 3}
       propertyPath: m_Name
       value: Boss_Idle
+      objectReference: {fileID: 0}
+    - target: {fileID: 8981546883371579642, guid: d092215ce49ec4a689f32e9510df0636, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8981546883371579642, guid: d092215ce49ec4a689f32e9510df0636, type: 3}
+      propertyPath: m_TagString
+      value: Boss
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
