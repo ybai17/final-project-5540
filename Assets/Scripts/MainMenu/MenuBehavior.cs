@@ -10,13 +10,14 @@ public class MenuBehavior : MonoBehaviour
     public Button continueButton;
 
     [Header("Mouse Sensitivities (multipliers)")]
-    public float mouseSensLow = 0.5f;
+    public float mouseSensLow = 0.1f;
     public float mouseSensMed = 1f;
-    public float mouseSensHigh = 2f;
+    public float mouseSensHigh = 4f;
 
     void Start()
     {
         currentLevel = PlayerPrefs.GetInt("CurrentLevel");
+        PlayerPrefs.SetFloat("MouseSensitivity", mouseSensMed);
 
         Debug.Log("fetched CurrentLevel: " + currentLevel);
 
