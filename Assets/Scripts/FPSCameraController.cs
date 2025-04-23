@@ -24,6 +24,11 @@ public class FPSCameraController : MonoBehaviour
     {
         mouseSensMultiplier = PlayerPrefs.GetFloat("MouseSensitivity");
 
+        if (mouseSensMultiplier == 0)
+        {
+            mouseSensMultiplier = 1f;
+        }
+
         player = transform.parent;
         inventoryManager = player.GetComponent<PlayerInventoryManager>();
 
